@@ -6,7 +6,7 @@
 /*   By: abeznik <abeznik@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/15 09:15:26 by abeznik       #+#    #+#                 */
-/*   Updated: 2021/12/13 11:31:46 by abeznik       ########   odam.nl         */
+/*   Updated: 2021/12/13 11:39:38 by abeznik       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	ft_wordlength(int j, const char *s, char c)
 	return (i - x);
 }
 
-static int	ft_countWords(char const *s, char c, int x)
+static int	ft_countwords(char const *s, char c, int x)
 {
 	int	i;
 	int	j;
@@ -79,13 +79,13 @@ char	**ft_split(char const *s, char c)
 
 	if (s == NULL)
 		return (NULL);
-	buff = (char **)malloc(sizeof(char *) * (1 + ft_countWords(s, c, -1)));
+	buff = (char **)malloc(sizeof(char *) * (1 + ft_countwords(s, c, -1)));
 	if (buff == NULL)
 		return (NULL);
 	j = 0;
-	while (j < ft_countWords(s, c, -1))
+	while (j < ft_countwords(s, c, -1))
 	{
-		buff[j] = ft_substr(s, ft_countWords(s, c, j), ft_wordlength(j, s, c));
+		buff[j] = ft_substr(s, ft_countwords(s, c, j), ft_wordlength(j, s, c));
 		if (buff[j] == NULL)
 			return (ft_free(j, buff));
 		j++;
