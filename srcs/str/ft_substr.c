@@ -6,7 +6,7 @@
 /*   By: abeznik <abeznik@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/01 11:03:44 by abeznik       #+#    #+#                 */
-/*   Updated: 2021/11/21 13:52:48 by abeznik       ########   odam.nl         */
+/*   Updated: 2021/12/13 11:35:15 by abeznik       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,27 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*buff;
 	size_t	i;
-	char	*ptr;
 
-	if (!s)
-		return (NULL);
-	if (start + 1 > ft_strlen(s) || !len)
-		return (ft_strdup(""));
-	ptr = (char *)ft_calloc(len + 1, sizeof(char));
-	if (!ptr)
-		return (NULL);
 	i = 0;
-	while (len > i && s[start + i])
+	if (s == NULL)
+		return (NULL);
+	if (start >= (unsigned int)ft_strlen(s))
 	{
-		ptr[i] = s[start + i];
-		i++;
+		buff = (char *)malloc(1);
+		buff[0] = '\0';
+		return (buff);
 	}
-	return (ptr);
+	buff = (char *)malloc(sizeof(char) * (len + 1));
+	if (buff == NULL)
+		return (NULL);
+	while ((len > i) && (s[start] != '\0'))
+	{
+		buff[i] = s[start];
+		i++;
+		start++;
+	}
+	buff[i] = '\0';
+	return (buff);
 }
