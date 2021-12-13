@@ -6,7 +6,7 @@
 /*   By: abeznik <abeznik@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/15 09:15:26 by abeznik       #+#    #+#                 */
-/*   Updated: 2021/12/13 11:29:37 by abeznik       ########   odam.nl         */
+/*   Updated: 2021/12/13 11:30:23 by abeznik       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char	**ft_split(char const *s, char c)
 	if (buff == NULL)
 		return (NULL);
 	j = 0;
-	while (j < ft_wordcount(s, c, -1))
+	while (j < ft_countWords(s, c, -1))
 	{
 		buff[j] = ft_substr(s, ft_countWords(s, c, j), ft_wordlength(j, s, c));
 		if (buff[j] == NULL)
